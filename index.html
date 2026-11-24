@@ -279,6 +279,72 @@
     .menu{min-width:200px}
     .mi{padding:14px 12px;font-size:14px}   /* thumb-sized rows */
   }
+
+#lxToast{position:fixed;left:50%;top:calc(env(safe-area-inset-top,0px) + 18px);transform:translate(-50%,-14px);
+  background:#C0432B;color:#fff;font-family:"IBM Plex Mono",monospace;font-size:14px;letter-spacing:.02em;
+  padding:11px 18px;border-radius:999px;box-shadow:0 8px 28px rgba(0,0,0,.45);opacity:0;pointer-events:none;
+  transition:opacity .18s,transform .18s;z-index:9999;white-space:nowrap;max-width:92vw;overflow:hidden;text-overflow:ellipsis}
+#lxToast.show{opacity:1;transform:translate(-50%,0)}
+#lxToast.dup{background:#3a3226;color:#ECE4D3}
+#lxToast.err{background:#5a1d14}
+.w.just-saved{background:#3d7a4a !important;color:#fff !important;border-radius:4px;transition:background .3s}
+.w{-webkit-user-select:none;user-select:none}
+
+#hoverSpk{position:fixed;transform:translate(-50%,-100%);z-index:9000;width:34px;height:30px;border-radius:9px;
+  border:1px solid #4a3f31;background:#262019;color:#ECE4D3;font-size:15px;line-height:1;cursor:pointer;padding:0;
+  box-shadow:0 4px 14px rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:opacity .12s}
+#hoverSpk.show{opacity:1;pointer-events:auto}
+#hoverSpk:hover{background:#C0432B;border-color:#C0432B}
+#hoverSpk.playing{background:#3d7a4a;border-color:#3d7a4a}
+
+/* long sentence translations: panel never covers more than ~60% of the screen,
+   scrolls inside itself, and the close button stays pinned at the top */
+.tray-in{max-height:min(62vh,620px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.tray .x{position:sticky;top:0;float:right;margin:-6px -8px 0 12px;z-index:3;background:#221d16;border-radius:10px;
+  padding:4px 12px;font-size:28px;color:var(--bone-dim)}
+.tray .x:hover{color:var(--bone);background:var(--panel2)}
+@media (max-width:640px){ .tray-in{max-height:58vh} .tray .x{top:0;right:auto;font-size:30px;padding:6px 12px} }
+
+.bankday{display:flex;justify-content:space-between;align-items:baseline;padding:14px 20px 6px;position:sticky;top:-4px;background:#1b1711;z-index:2;
+  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--verm);border-bottom:1px solid var(--line)}
+.bankday .bd-n{color:var(--bone-faint);letter-spacing:.04em;text-transform:none}
+.bankday .bd-n b{color:var(--bone-dim);font-weight:500}
+.bankrow .ctx mark{background:rgba(192,67,43,.28);color:var(--bone);border-radius:3px;padding:0 2px;font-style:normal}
+.bankrow.exp .hw{opacity:.75}
+.inanki{font-family:"IBM Plex Mono",monospace;font-size:10px;color:#7fb38b;border:1px solid #3d5a43;border-radius:6px;padding:1px 6px;vertical-align:middle;margin-left:6px}
+#bankCount.done{color:#7fb38b}
+.sheet-f .b:disabled{opacity:.5;cursor:default}
+#lxToast.goal{background:#3d7a4a}
+.bankrow .ctx{white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;line-height:1.45}
+
+.bm-add{padding:14px 20px;border-bottom:1px solid var(--line)}
+.bm-here{color:var(--bone);font-size:15px}
+.bm-here .lbl{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--verm);margin-right:6px}
+.bm-here .sn{color:var(--bone-faint);font-style:italic;font-size:13px;margin-top:4px}
+.bm-row{display:flex;gap:10px;margin-top:12px}
+.bm-row input{flex:1;min-width:0;background:var(--panel2,#262019);border:1px solid var(--line);border-radius:8px;color:var(--bone);padding:9px 12px;font-family:inherit}
+.bm-row .b{font-family:"IBM Plex Mono",monospace;font-size:12px;background:var(--verm);color:#fff;border:none;border-radius:8px;padding:10px 14px;cursor:pointer;white-space:nowrap}
+.bmrow .txt{cursor:pointer}
+.bmrow:hover{background:rgba(255,255,255,.025)}
+.bm-where{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--verm);margin-left:6px}
+#bmBtn{font-size:15px;filter:grayscale(1);opacity:.75}
+#bmBtn.has{filter:none;opacity:1}
+.sent-block.bm-flash{background:rgba(192,67,43,.22)!important;transition:background .6s}
+
+#hoverSpk{display:flex;gap:3px;width:auto;height:auto;padding:3px;background:#1d1812}
+#hoverSpk .hb{width:34px;height:28px;border:none;border-radius:7px;background:#262019;color:#ECE4D3;font-size:15px;line-height:1;cursor:pointer;padding:0}
+#hoverSpk .hb.tr{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.04em;font-weight:600}
+#hoverSpk:hover{background:#1d1812;border-color:#4a3f31}
+#hoverSpk .hb:hover{background:#C0432B}
+#hoverSpk .hb.playing{background:#3d7a4a}
+.tray .note .phr{font-style:normal;color:var(--bone);opacity:.8;margin-top:6px;font-size:15px}
+.tray .note{font-style:normal}
+.tray .note .k{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--verm);margin-right:8px;font-style:normal}
+.tray .note .frm{color:var(--bone);font-size:16px;margin-top:6px}
+.tray .note .frm .fm{color:var(--bone-faint);font-style:italic}
+.tray .note .phr .es{color:var(--bone);opacity:1}
+.tray .note .alt{color:var(--bone-faint);font-style:italic;margin-top:6px;font-size:14.5px}
+.tray .retry{margin-left:10px;font-family:"IBM Plex Mono",monospace;font-size:12px;background:var(--verm);color:#fff;border:none;border-radius:8px;padding:6px 12px;cursor:pointer}
 </style>
 
 <div class="wrap">
@@ -302,6 +368,7 @@
 
     <span class="barspace"></span>
 
+    <button class="nav ico" id="bmBtn" aria-label="marcadores" title="marcadores (tecla b = marcar aqu&iacute;)">&#128278;</button>
     <button class="bankbtn" id="bankBtn">banco <b id="bankCount">0</b></button>
     <button class="mxbtn" id="mxBtn" title="espa&ntilde;ol mexicano natural (clave gratis de Gemini)">MX</button>
     <div class="menuwrap">
@@ -316,6 +383,21 @@
   </div>
 
   <div class="read" id="read"></div>
+</div>
+
+<div class="overlay" id="bmOverlay">
+  <div class="sheet" role="dialog" aria-label="Marcadores">
+    <div class="sheet-h"><h2>Marcadores</h2><span class="cnt" id="bmCnt">0</span></div>
+    <div class="bm-add">
+      <div class="bm-here" id="bmHere"></div>
+      <div class="bm-row"><input id="bmNote" type="text" placeholder="nota opcional (ej. empieza parte 2)" maxlength="80"><button class="b" id="bmAdd">marcar aqu&iacute;</button></div>
+    </div>
+    <div class="sheet-list" id="bmList"></div>
+    <div class="sheet-f">
+      <button class="b ghost" id="bmClose">cerrar</button>
+      <div class="howto">Toca un marcador para volver justo a esa oraci&oacute;n, aunque sea de otro libro. Atajo en la compu: tecla <b>b</b> marca donde vas.</div>
+    </div>
+  </div>
 </div>
 
 <div class="overlay" id="libOverlay">
@@ -344,11 +426,12 @@
     <div class="sheet-h"><h2>Banco de palabras</h2><span class="cnt" id="bankCnt2">0</span></div>
     <div class="sheet-list" id="bankList"></div>
     <div class="sheet-f">
-      <button class="b" id="bankCopy">copiar todo</button>
-      <button class="b ghost" id="bankDownload">descargar .txt</button>
+      <button class="b" id="bankExportNew">a Anki: nuevas</button>
+      <button class="b ghost" id="bankCopy">copiar nuevas</button>
+      <button class="b ghost" id="bankDownload">descargar todo</button>
       <button class="b ghost" id="bankOrganize">organizar</button>
       <button class="b ghost" id="bankClose">cerrar</button>
-      <div class="howto">Para meterlas en Anki: descarga el .txt, luego en Anki entra a Archivo &rarr; Importar, elige el archivo, separador Tab, campo 1 al Frente y campo 2 al Reverso.</div>
+      <div class="howto">&ldquo;a Anki: nuevas&rdquo; descarga solo las palabras que a&uacute;n no has pasado a Anki y las marca con &check;. En Anki: Archivo &rarr; Importar &rarr; elige el archivo. Ya viene configurado (mazo, separador y campos), solo dale Importar.</div>
     </div>
   </div>
 </div>
@@ -415,9 +498,18 @@ async function gtx(text, withDict, sl, tl){
   sl=sl||"es"; tl=tl||"en";
   const dt = withDict ? "&dt=t&dt=bd" : "&dt=t";
   const url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl="+sl+"&tl="+tl+dt+"&q="+encodeURIComponent(text);
-  const res = await fetch(url);
-  if(!res.ok) throw new Error("HTTP "+res.status);
-  return res.json();
+  let lastErr;
+  for(let attempt=0; attempt<2; attempt++){
+    const ac = window.AbortController ? new AbortController() : null;
+    const t = ac ? setTimeout(()=>ac.abort(), 6000) : null;
+    try{
+      const res = await fetch(url, ac?{signal:ac.signal}:undefined);
+      if(!res.ok) throw new Error("HTTP "+res.status);
+      return await res.json();
+    }catch(e){ lastErr=e; if(attempt===0) await new Promise(r=>setTimeout(r,450)); }
+    finally{ if(t) clearTimeout(t); }
+  }
+  throw lastErr||new Error("sin conexi\u00f3n");
 }
 function gtxMain(d){ return (d && d[0]) ? d[0].map(s=>(s&&s[0])?s[0]:"").join("").trim() : ""; }
 function gtxDict(d){
@@ -447,7 +539,7 @@ function mexicanize(s){
   return out;
 }
 // natural Mexican Spanish via Google Gemini (free-tier key, works on phone too)
-const SYS_TRANSLATE="Eres un traductor literario al espa\u00f1ol de M\u00e9xico. Traduces de forma natural, idiom\u00e1tica y fluida, como escribir\u00eda una persona culta mexicana, no una m\u00e1quina. Conservas el tono, el registro y el significado del original. Devuelves \u00daNICAMENTE la traducci\u00f3n, sin notas, sin comillas y sin explicaciones.";
+const SYS_TRANSLATE="Traduce al espa\u00f1ol de M\u00e9xico tal como se habla y se escribe hoy en M\u00e9xico, NO al espa\u00f1ol neutro ni de Espa\u00f1a. Usa vocabulario y giros mexicanos naturales donde encajen (por ejemplo: platicar, checar, carro, celular, computadora, chamba, \u00bfqu\u00e9 onda?, ahorita, padre, \u00e1ndale, ni modo, a poco, la neta, chido, jalar, agarrar), siempre que respeten el sentido. Nunca uses vosotros ni formas de Espa\u00f1a (coche, ordenador, m\u00f3vil, vale, t\u00edo, guay). Que suene como lo escribir\u00eda un mexicano para otros mexicanos, fluido y nada rob\u00f3tico, sin exagerar el slang. Conserva el tono, el registro, el significado y los saltos de p\u00e1rrafo del original. Devuelve \u00daNICAMENTE la traducci\u00f3n, sin notas, sin comillas y sin explicaciones.";
 const SYS_MODERNIZE="Recibes un texto en espa\u00f1ol antiguo o arcaico. Reescr\u00edbelo en espa\u00f1ol de M\u00e9xico actual: claro, natural y contempor\u00e1neo, como lo redactar\u00eda hoy una persona culta mexicana. Mantente completamente fiel al significado del texto que recibes; no lo bases en ninguna otra versi\u00f3n. Conserva los nombres propios y cualquier numeraci\u00f3n de cap\u00edtulos o vers\u00edculos tal como aparece. Devuelve \u00daNICAMENTE el texto reescrito, sin notas ni explicaciones.";
 let geminiModelOk=null;   // remember the model that worked; skip dead ones on later calls
 const GEMINI_MODELS=["gemini-2.5-flash","gemini-flash-latest","gemini-2.0-flash"];
@@ -901,19 +993,22 @@ async function showPage(n){
     const lang = text.trim() ? detectLang(text) : "";
     if(lang==="en"){
       const useGem = mxOn && !!geminiKey;
-      const ck=curPage+"|"+(useGem?"mx":"std");
+      const ck=curPage+"|"+(useGem?"mx2":"std");
       let es=pageCacheES[ck];
       if(!es){ try{ const saved=await idbGet("tr|"+bookKey+"|"+ck); if(typeof saved==="string" && saved){ es=saved; pageCacheES[ck]=es; } }catch(e){} }
       if(!es){
         if(useGem){
           els.read.innerHTML='<p class="status">traduciendo al espa\u00f1ol mexicano\u2026</p>';
-          try{ es=await geminiTranslate(text); }catch(e){ noteMsg="Natural fall\u00f3 ("+e.message+"). Mostrando traducci\u00f3n est\u00e1ndar."; }
+          try{ es=await geminiTranslate(text); }catch(e){ noteMsg="MX fall\u00f3 ("+e.message+"). Mostrando la traducci\u00f3n normal por ahora; cambia de p\u00e1gina y regresa para reintentar."; }
         } else {
           els.read.innerHTML='<p class="status">traduciendo al espa\u00f1ol\u2026</p>';
         }
+        // if MX failed, show the standard version but file it under "std", never as the MX page
+        const saveKey = (useGem && noteMsg) ? curPage+"|std" : ck;
+        if(!es && saveKey!==ck){ es=pageCacheES[saveKey]; if(!es){ try{ const sv=await idbGet("tr|"+bookKey+"|"+saveKey); if(typeof sv==="string"&&sv) es=sv; }catch(e){} } }
         if(!es){ try{ es=await translateToSpanish(text); }catch(e){ els.read.innerHTML='<p class="err">No pude traducir la p\u00e1gina. Revisa tu conexi\u00f3n.</p>'; return; } }
-        pageCacheES[ck]=es;
-        try{ idbSet("tr|"+bookKey+"|"+ck, es); }catch(e){}
+        pageCacheES[saveKey]=es;
+        try{ idbSet("tr|"+bookKey+"|"+saveKey, es); }catch(e){}
       }
       text=es;
     } else if(lang==="es" && mxOn && geminiKey){
@@ -960,7 +1055,8 @@ function renderText(text){
           if(m[1]){
             const s=document.createElement("span");
             s.className="w"; s.textContent=m[1]; s.dataset.si=idx; s.tabIndex=0;
-            s.addEventListener("click",onWord);
+            s.addEventListener("click",onWordTap);
+            s.addEventListener("mousedown",e=>{ if(e.detail>1) e.preventDefault(); });
             s.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();onWord.call(s,e);}});
             line.appendChild(s);
           }else line.appendChild(document.createTextNode(m[2]));
@@ -992,14 +1088,51 @@ function speak(text){
 // context-aware word meaning via Gemini: reads the whole sentence, answers in Mexican Spanish sense
 async function geminiWord(word, sent, context){
   const ctxLine = context && context!==sent ? "\nContexto alrededor: \u00ab"+context+"\u00bb" : "";
-  const prompt="Oraci\u00f3n (espa\u00f1ol): \u00ab"+sent+"\u00bb"+ctxLine+"\nExplica la palabra \u00ab"+word+"\u00bb SEG\u00daN SU USO EXACTO AQU\u00cd (no su significado m\u00e1s com\u00fan), para un mexicano que aprende ingl\u00e9s.\nResponde SOLO un JSON: {\"en\":\"significado en ingl\u00e9s que encaja en ESTA oraci\u00f3n\",\"pos\":\"sustantivo|verbo|adjetivo|adverbio|...\",\"mx\":\"c\u00f3mo se entiende en espa\u00f1ol de M\u00e9xico, breve\"} sin texto extra.";
-  const out=await geminiRun(prompt, "Eres un diccionario biling\u00fce preciso y sensible al contexto. Respondes solo con el JSON pedido.", {fast:true, maxTokens:220, temp:0.2});
-  let j; try{ j=JSON.parse(out.replace(/```json|```/g,"").trim()); }catch(e){ j={en:out.trim()}; }
-  return {en:j.en||"", pos:j.pos||"", alts:j.mx?[j.mx]:[], src:"gemini"};
+  const prompt="Oraci\u00f3n (espa\u00f1ol): \u00ab"+sent+"\u00bb"+ctxLine+"\nPalabra: \u00ab"+word+"\u00bb"
+    +"\nResponde SOLO un JSON, sin texto extra:"
+    +"\n{\"en\":\"traducci\u00f3n al ingl\u00e9s de la palabra SEG\u00daN SU USO EXACTO AQU\u00cd, de 1 a 5 palabras\","
+    +"\"pos\":\"sustantivo|verbo|adjetivo|adverbio|preposici\u00f3n|conjunci\u00f3n|pronombre|art\u00edculo\","
+    +"\"base\":\"forma de diccionario (infinitivo, o masculino singular) SOLO si es distinta de la palabra; si no, cadena vac\u00eda\","
+    +"\"form\":\"si es verbo conjugado, persona y tiempo muy breve (ej. t\u00fa, presente); si no, cadena vac\u00eda\","
+    +"\"chunk\":\"la expresi\u00f3n o colocaci\u00f3n de 2 a 5 palabras de la oraci\u00f3n que incluye la palabra, copiada tal cual (ej. corres el riesgo, a fondo, sin embargo); cadena vac\u00eda si la palabra va suelta\","
+    +"\"chunkEn\":\"esa expresi\u00f3n en ingl\u00e9s natural\"}";
+  const run=geminiRun(prompt, "Eres un diccionario biling\u00fce preciso y sensible al contexto. Respondes solo con el JSON pedido.", {fast:true, maxTokens:400, temp:0.2});
+  const out=await Promise.race([run, new Promise((_,rej)=>setTimeout(()=>rej(new Error("tard\u00f3 demasiado")),9000))]);
+  const m=out.match(/\{[\s\S]*\}/);
+  let j; try{ j=JSON.parse(m?m[0]:out); }catch(e){ throw new Error("respuesta incompleta"); }
+  if(!j.en) throw new Error("sin traducci\u00f3n");
+  const same=(a,b)=>(a||"").trim().toLowerCase()===(b||"").trim().toLowerCase();
+  return {en:j.en, pos:j.pos||"",
+    base: same(j.base,word)?"":(j.base||""), form:j.form||"",
+    chunk: same(j.chunk,word)?"":(j.chunk||""), chunkEn:j.chunkEn||"",
+    alts:[], src:"gemini"};
 }
 function sentWindow(idx){
   const a=sentences[idx-1]||"", b=sentences[idx]||"", c=sentences[idx+1]||"";
   return (a+" "+b+" "+c).trim();
+}
+/* Context link without Gemini: translate the few words around this exact word, then choose
+   the dictionary meaning that shows up in that phrase. "despuntar como profesional" -> "stand out", not "blunt". */
+function phraseAround(sent,word){ const s=snippetParts(sent,word,6); return (s.pre+s.hit+s.post).replace(/\u2026/g,"").replace(/\s+/g," ").trim(); }
+function stemHit(hay,term){
+  const ws=term.toLowerCase().replace(/^(to|the|a|an) /,"").split(/\s+/).filter(w=>w.length>2);
+  if(!ws.length) return false;
+  return ws.every(w=>{ const st=w.length>5?w.slice(0,w.length-2):w; return new RegExp("\\b"+st.replace(/[.*+?^${}()|[\]\\]/g,"\\$&"),"i").test(hay); });
+}
+async function ctxGloss(word,sent){
+  const phrase=phraseAround(sent,word);
+  const usePhrase=phrase && phrase.toLowerCase()!==word.toLowerCase();
+  const [d,pd]=await Promise.all([ gtx(word,true).catch(()=>null), usePhrase?gtx(phrase,false).catch(()=>null):Promise.resolve(null) ]);
+  if(!d && !pd) throw new Error("sin conexi\u00f3n");
+  const dict=gtxDict(d), main=gtxMain(d), phraseEn=pd?gtxMain(pd):"";
+  let en=main, pos=(dict[0]&&dict[0].pos)||"", picked=false;
+  if(phraseEn && !stemHit(phraseEn,main)){
+    for(const blk of dict){ const t=(blk.terms||[]).find(t=>stemHit(phraseEn,t)); if(t){ en=t; pos=blk.pos||pos; picked=true; break; } }
+  }
+  if(!en && phraseEn){ en="\u2014"; }
+  const all=[main].concat(...dict.map(b=>b.terms||[]));
+  const alts=[...new Set(all.map(x=>(x||"").trim()).filter(Boolean))].filter(x=>x.toLowerCase()!==en.toLowerCase()).slice(0,3);
+  return {en, pos, alts, phrase: usePhrase?phrase:"", phraseEn, src: (picked||stemHit(phraseEn,main))?"context":"dict"};
 }
 async function onWord(){
   const el=this;
@@ -1017,7 +1150,7 @@ async function onWord(){
   document.getElementById("tSpeak").onclick=()=>speak(word);
 
   const ctx = !!geminiKey;
-  const cacheKey = ctx ? word.toLowerCase()+"||"+sent : word.toLowerCase();
+  const cacheKey = word.toLowerCase()+"||"+sent;
   const hit=cache.word[cacheKey];
   if(hit){ renderWord(el,hit,false); return; }
 
@@ -1026,10 +1159,7 @@ async function onWord(){
      - gemini: context-aware gloss, slower, quietly replaces the dictionary answer when it lands
      So the tray fills instantly and then sharpens, rather than sitting on a spinner. */
   let settled=false;
-  const fast = gtx(word,true).then(d=>{
-    const dict=gtxDict(d);
-    return {en:gtxMain(d), pos:(dict[0]&&dict[0].pos)||"", alts:(dict[0]&&dict[0].terms)||[]};
-  }).catch(()=>null);
+  const fast = ctxGloss(word,sent).catch(()=>null);
   const slow = ctx ? geminiWord(word,sent,sentWindow(+el.dataset.si)).catch(()=>null) : Promise.resolve(null);
 
   fast.then(g=>{
@@ -1047,16 +1177,26 @@ async function onWord(){
   const gF = await fast;
   settled=true;
   if(gF){ cache.word[cacheKey]=gF; renderWord(el,gF,false); return; }
-  if(el===activeWordEl) els.tEn.innerHTML='<span class="err">El traductor necesita internet y no est\u00e1 disponible en la vista previa de la app. \u00c1brelo desde tu sitio (el \u00edcono en tu pantalla) y funciona.</span>';
+  if(el===activeWordEl){
+    els.tEn.innerHTML='<span class="err">No carg\u00f3 la traducci\u00f3n.</span><button class="retry" type="button">reintentar</button>';
+    const rb=els.tEn.querySelector(".retry"); if(rb) rb.onclick=()=>onWord.call(el);
+  }
 }
 function renderWord(el,g,sharpening){
   if(el!==activeWordEl) return;
   els.tMeta.textContent=g.pos||"";
-  const tag = g.src==="gemini" ? "en contexto" : "traducci\u00f3n";
+  const tag = (g.src==="gemini"||g.src==="context") ? "en contexto" : "traducci\u00f3n";
   els.tEn.innerHTML='<span class="lead">'+tag+'</span>'+escapeHtml(g.en||"\u2014")
     + (sharpening?' <span class="spin" style="opacity:.55">afinando\u2026</span>':'');
+  let note="";
+  if(g.base) note+='<div class="frm"><span class="k">viene de</span>'+escapeHtml(g.base)
+    +(g.form?' <span class="fm">\u00b7 '+escapeHtml(g.form)+'</span>':'')+'</div>';
+  else if(g.form) note+='<div class="frm"><span class="k">forma</span><span class="fm">'+escapeHtml(g.form)+'</span></div>';
+  if(g.chunk && g.chunkEn) note+='<div class="phr"><span class="k">la frase</span><span class="es">\u00ab'+escapeHtml(g.chunk)+'\u00bb</span> \u2192 '+escapeHtml(g.chunkEn)+'</div>';
+  else if(g.phrase && g.phraseEn) note+='<div class="phr"><span class="k">la frase</span><span class="es">\u00ab'+escapeHtml(g.phrase)+'\u00bb</span> \u2192 '+escapeHtml(g.phraseEn)+'</div>';
   const alts=(g.alts||[]).filter(t=>t.toLowerCase()!==(g.en||"").toLowerCase());
-  els.tNote.textContent=alts.length?((g.src==="gemini"?"en M\u00e9xico: ":"tambi\u00e9n: ")+alts.join(", ")):"";
+  if(g.src!=="gemini" && alts.length) note+='<div class="alt">tambi\u00e9n: '+escapeHtml(alts.join(", "))+'</div>';
+  els.tNote.innerHTML=note;
 }
 
 function buildBtns(word,sent){
@@ -1104,13 +1244,24 @@ function attachTw(){
 }
 async function transSent(sent){
   hideTip(); tipSent=sent;
+  const token=(transSent.n=(transSent.n||0)+1);
   els.tSent.classList.add("show"); els.tSent.innerHTML='<span class="spin">traduciendo la oraci\u00f3n\u2026</span>';
   let t=cache.sent[sent];
   if(!t && geminiKey){
-    try{ t=await geminiRun("Traduce esta oraci\u00f3n al ingl\u00e9s natural, seg\u00fan su sentido en contexto. Devuelve SOLO la traducci\u00f3n: \u00ab"+sent+"\u00bb", "Traductor preciso y sensible al contexto.", {fast:true, maxTokens:600, temp:0.2}); cache.sent[sent]=t; }catch(e){ t=null; }
+    try{
+      const run=geminiRun("Traduce esta oraci\u00f3n al ingl\u00e9s natural, seg\u00fan su sentido en contexto. Devuelve SOLO la traducci\u00f3n: \u00ab"+sent+"\u00bb", "Traductor preciso y sensible al contexto.", {fast:true, maxTokens:600, temp:0.2});
+      t=await Promise.race([run, new Promise((_,rej)=>setTimeout(()=>rej(new Error("lento")),9000))]);
+      if(t) cache.sent[sent]=t;
+    }catch(e){ t=null; }
   }
-  if(!t){ try{ t=gtxMain(await gtx(sent,false)); cache.sent[sent]=t; }
-    catch(e){ els.tSent.innerHTML='<span class="err">No pude traducir la oraci\u00f3n.</span>'; return; } }
+  if(token!==transSent.n) return; // a newer sentence was asked for
+  if(!t){ try{ t=gtxMain(await gtx(sent,false)); if(t) cache.sent[sent]=t; }catch(e){ t=null; } }
+  if(token!==transSent.n) return;
+  if(!t){
+    els.tSent.innerHTML='<span class="err">No pude traducir la oraci\u00f3n.</span><button class="retry" type="button">reintentar</button>';
+    const rb=els.tSent.querySelector(".retry"); if(rb) rb.onclick=()=>transSent(sent);
+    return;
+  }
   els.tSent.innerHTML=
     '<div class="srow"><span class="slang">es</span>'+wordifyES(sent)+'</div>'+
     '<div class="srow en"><span class="slang">en</span>'+escapeHtml(t)+'</div>'+
@@ -1137,7 +1288,16 @@ function dedupeBank(){
   for(const it of bank){ const k=wkey(it.word); if(k && !seen.has(k)){ seen.add(k); out.push(it); } }
   return out;
 }
-function updateBankCount(){ const n=bank.length; const a=$("bankCount"); if(a)a.textContent=n; const b=$("bankCnt2"); if(b)b.textContent=n+(n===1?" palabra":" palabras"); }
+const DAILY_GOAL=20;
+const dayKey=ts=>{ const d=new Date(ts||0); return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0"); };
+function todayCount(){ const k=dayKey(Date.now()); return bank.filter(x=>dayKey(x.ts)===k).length; }
+function newItems(){ return bank.filter(x=>!x.exp); }
+function updateBankCount(){
+  const n=bank.length, t=todayCount(), nw=newItems().length;
+  const a=$("bankCount"); if(a){ a.textContent=t+"/"+DAILY_GOAL; a.title=n+" en total"; a.classList.toggle("done",t>=DAILY_GOAL); }
+  const b=$("bankCnt2"); if(b) b.textContent="hoy "+t+"/"+DAILY_GOAL+" \u00b7 "+nw+" sin pasar a Anki \u00b7 "+n+" en total";
+  const e=$("bankExportNew"); if(e){ e.textContent=nw?("a Anki: "+nw+" nuevas"):"todo pasado a Anki \u2713"; e.disabled=!nw; }
+}
 async function loadBank(){
   const id=bankId();
   let arr=null;
@@ -1169,24 +1329,272 @@ async function persistBank(){
 }
 
 async function saveWord(word,sent,btn){
-  const g=cache.word[word.toLowerCase()]||{};
-  if(bank.some(x=>wkey(x.word)===wkey(word))){ const o=btn.textContent;btn.textContent="ya guardada";setTimeout(()=>btn.textContent=o,1300); return; }
-  bank.push({word,en:g.en||"",sent,page:curPage,ts:Date.now()});
+  const flash=(t)=>{ if(!btn) return; const o=btn.textContent; btn.textContent=t; setTimeout(()=>btn.textContent=o,1300); };
+  if(bankLoadedFor!==bankId()) await loadBank();
+  if(bank.some(x=>wkey(x.word)===wkey(word))){ flash("ya guardada"); showToast("\u201c"+word+"\u201d ya estaba en tu banco", "dup"); return; }
+  const ck=word.toLowerCase()+"||"+sent;
+  for(let i=0;i<12 && !cache.word[ck];i++) await new Promise(r=>setTimeout(r,250));
+  const g=cache.word[ck]||{};
+  const entry={word,en:g.en||"",pos:g.pos||"",alts:(g.alts||[]).slice(0,4),sent,page:curPage,ts:Date.now()};
+  if(g.phraseEn) entry.snipEn=g.phraseEn;
+  bank.push(entry);
   await persistBank();
-  const o=btn.textContent;btn.textContent="guardada \u2713";setTimeout(()=>btn.textContent=o,1300);
+  const saved=bank.some(x=>wkey(x.word)===wkey(word));
+  if(!saved){ flash("error"); showToast("No se pudo guardar \u201c"+word+"\u201d", "err"); return; }
+  flash("guardada \u2713");
+  { const t=todayCount(); showToast(t===DAILY_GOAL?("\ud83c\udfaf \u201c"+word+"\u201d \u00b7 "+t+"/"+DAILY_GOAL+" \u00a1meta del d\u00eda!"):("\u2713 \u201c"+word+"\u201d guardada \u00b7 hoy "+t+"/"+DAILY_GOAL), t===DAILY_GOAL?"goal":"ok"); }
+  // double tap can save before the translation lands: fill it in once it does
+  if(!entry.en){
+    let en="";
+    for(let i=0;i<16 && !en;i++){ await new Promise(r=>setTimeout(r,250)); en=(cache.word[ck]||{}).en||""; }
+    if(!en){ try{ en=gtxMain(await gtx(word,true))||""; }catch(e){} }
+    if(en){ const x=bank.find(b=>wkey(b.word)===wkey(word)); if(x && !x.en){ x.en=en; await persistBank(); } }
+  }
+  const x=bank.find(b=>wkey(b.word)===wkey(word));
+  if(x && await enrichEntry(x)) await persistBank();
+}
+
+/* ---------- card enrichment: what the back of the Anki card needs ----------
+   meaning of the word, other meanings, and the short phrase around it translated to English.
+   Runs after each save, and again at export for older words saved before this existed. */
+function snippetPlain(it){ const s=snippetParts(it.sent,it.word,7); return (s.pre+s.hit+s.post).replace(/\u2026/g,"").replace(/\s+/g," ").trim(); }
+async function enrichEntry(it){
+  let changed=false;
+  if(!it.en || it.pos===undefined || !it.alts){
+    const c=cache.word[(it.word||"").toLowerCase()];
+    if(c){ if(!it.en&&c.en){it.en=c.en;changed=true;} if(it.pos===undefined){it.pos=c.pos||"";changed=true;} if(!it.alts){it.alts=(c.alts||[]).slice(0,4);changed=true;} }
+    if(!it.en || !it.alts || !it.alts.length){
+      try{ const d=await gtx(it.word,true); const dict=gtxDict(d);
+        if(!it.en){ it.en=gtxMain(d)||""; }
+        if(!it.pos) it.pos=(dict[0]&&dict[0].pos)||"";
+        if(!it.alts||!it.alts.length) it.alts=((dict[0]&&dict[0].terms)||[]).slice(0,4);
+        changed=true; }catch(e){}
+    }
+  }
+  if(!it.snipEn && it.sent){
+    const ph=snippetPlain(it);
+    if(ph && ph.toLowerCase()!==(it.word||"").toLowerCase()){
+      try{ const t=gtxMain(await gtx(ph,false)); if(t){ it.snipEn=t; changed=true; } }catch(e){}
+    }
+  }
+  return changed;
+}
+async function enrichAll(items){
+  const todo=items.filter(x=>!x.snipEn || !x.en || !x.alts);
+  if(!todo.length) return;
+  showToast("Preparando "+todo.length+" tarjetas\u2026","dup");
+  let i=0;
+  const work=async()=>{ while(i<todo.length){ const it=todo[i++]; try{ await enrichEntry(it); }catch(e){} } };
+  await Promise.race([Promise.all([work(),work(),work(),work()]), new Promise(r=>setTimeout(r,20000))]);
+  await persistBank();
+}
+
+
+/* ---------- hover speaker: hover a word, a small 🔊 pops up right above it ---------- */
+(function(){
+  if(!window.matchMedia || !matchMedia("(hover:hover) and (pointer:fine)").matches) return; // desktop only; phones keep tap
+  const btn=document.createElement("div"); btn.id="hoverSpk";
+  const spk=document.createElement("button"); spk.type="button"; spk.className="hb"; spk.setAttribute("aria-label","escuchar"); spk.title="escuchar (s)"; spk.textContent="\ud83d\udd0a";
+  const tr=document.createElement("button"); tr.type="button"; tr.className="hb tr"; tr.setAttribute("aria-label","traducir la oraci\u00f3n"); tr.title="traducir la oraci\u00f3n (t)"; tr.textContent="EN";
+  btn.appendChild(spk); btn.appendChild(tr);
+  document.body.appendChild(btn);
+  function translateSentOf(w){
+    if(!w) return;
+    const sent=sentences[+w.dataset.si]||w.textContent;
+    onWord.call(w);            // opens the panel on this word (sync part clears the old sentence first)
+    transSent(sent);
+    tr.classList.add("playing"); setTimeout(()=>tr.classList.remove("playing"),600);
+  }
+  let cur=null, hideT=null;
+  function place(w){
+    const r=w.getBoundingClientRect();
+    btn.style.left=(r.left+r.width/2)+"px"; btn.style.top=(r.top-4)+"px";
+  }
+  function show(w){ clearTimeout(hideT); cur=w; place(w); btn.classList.add("show"); }
+  function hideSoon(){ clearTimeout(hideT); hideT=setTimeout(()=>{ btn.classList.remove("show"); cur=null; },220); }
+  document.addEventListener("mouseover",e=>{
+    const w=e.target.closest && e.target.closest(".w");
+    if(w) show(w);
+  });
+  document.addEventListener("mouseout",e=>{
+    const w=e.target.closest && e.target.closest(".w");
+    if(w && !(e.relatedTarget && (btn.contains(e.relatedTarget) || w.contains(e.relatedTarget)))) hideSoon();
+  });
+  btn.addEventListener("mouseenter",()=>clearTimeout(hideT));
+  btn.addEventListener("mouseleave",hideSoon);
+  btn.addEventListener("mousedown",e=>e.preventDefault());
+  spk.addEventListener("click",e=>{
+    e.stopPropagation(); e.preventDefault();
+    if(!cur) return;
+    speak(cur.textContent);
+    spk.classList.add("playing"); setTimeout(()=>spk.classList.remove("playing"),600);
+  });
+  tr.addEventListener("click",e=>{ e.stopPropagation(); e.preventDefault(); translateSentOf(cur); });
+  window.addEventListener("scroll",()=>{ btn.classList.remove("show"); cur=null; },true);
+  // "s" key: hear the word under the mouse (or the open one)
+  document.addEventListener("keydown",e=>{
+    if(e.target.tagName==="INPUT"||e.target.tagName==="TEXTAREA"||e.metaKey||e.ctrlKey||e.altKey) return;
+    if(e.key==="s"||e.key==="S"){ const w=cur||activeWordEl; if(w){ e.preventDefault(); speak(w.textContent); } }
+    if(e.key==="t"||e.key==="T"){ const w=cur||activeWordEl; if(w){ e.preventDefault(); translateSentOf(w); } }
+  });
+})();
+
+/* ---------- bookmarks: save the exact sentence you're on, jump back from any book ---------- */
+let bookmarks=[];
+async function loadBookmarks(){ try{ const b=await idbGet("bookmarks"); bookmarks=Array.isArray(b)?b:[]; }catch(e){ bookmarks=[]; } }
+async function saveBookmarks(){ try{ await idbSet("bookmarks",bookmarks.slice()); }catch(e){} }
+function topSentenceIdx(){
+  const barB=(els.bar.getBoundingClientRect().bottom||0)+8;
+  const blocks=[...els.read.querySelectorAll(".sent-block")];
+  const b=blocks.find(x=>x.getBoundingClientRect().bottom>barB+20) || blocks[0];
+  return b ? +b.dataset.si : 0;
+}
+function curPlace(){
+  const si=topSentenceIdx();
+  const words=(sentences[si]||"").replace(/\s+/g," ").trim().split(" ");
+  const snip=words.slice(0,14).join(" ")+(words.length>14?" \u2026":"");
+  if(bibleMode) return {book:"__bible__",bookName:"Biblia",b:bibBook,c:bibCh,where:bibleHeader(),si,snip};
+  return {book:curBookId,bookName:bankDeckName||"Libro",page:curPage,where:"p\u00e1g. "+curPage,si,snip};
+}
+async function addBookmark(note){
+  if(!els.read.querySelector(".sent-block")){ showToast("Abre un libro primero","dup"); return; }
+  const pl=curPlace();
+  const same=bookmarks.find(x=>x.book===pl.book && x.where===pl.where && x.si===pl.si);
+  if(same){ if(note){ same.note=note; await saveBookmarks(); } showToast("\ud83d\udd16 Ya ten\u00edas un marcador aqu\u00ed","dup"); return; }
+  bookmarks.unshift(Object.assign(pl,{note:note||"",ts:Date.now(),id:Date.now()+"-"+Math.random().toString(36).slice(2,6)}));
+  await saveBookmarks();
+  showToast("\ud83d\udd16 Marcado \u00b7 "+pl.bookName+" \u00b7 "+pl.where,"ok");
+  $("bmBtn").classList.add("has");
+}
+function waitFor(fn,ms){ return new Promise(res=>{ const t0=Date.now(); (function tick(){ let v=false; try{ v=fn(); }catch(e){} if(v||Date.now()-t0>(ms||8000)) return res(v); setTimeout(tick,80); })(); }); }
+async function goBookmark(bm){
+  closeBm();
+  if(bm.book==="__bible__"){
+    if(!bibleMode){ try{ await idbSet("bibpos",{b:bm.b,c:bm.c}); }catch(e){} await openBible(); }
+    else await showChapter(bm.b,bm.c);
+    await waitFor(()=>bibleMode && bibBook===bm.b && bibCh===bm.c && els.read.querySelector(".sent-block"));
+  }else{
+    if(bibleMode || curBookId!==bm.book){
+      const books=await getBooks(); const bk=books.find(x=>x.id===bm.book);
+      if(!bk){ showToast("Ese libro ya no est\u00e1 en tu biblioteca","err"); return; }
+      try{ await idbSet("lastpage|"+bm.book,bm.page); }catch(e){}
+      await openBook(bk.id,bk.name);
+    }else if(curPage!==bm.page){ await showPage(bm.page); }
+    await waitFor(()=>!bibleMode && curBookId===bm.book && curPage===bm.page && els.read.querySelector(".sent-block"));
+  }
+  const el=els.read.querySelector('.sent-block[data-si="'+bm.si+'"]');
+  if(el){
+    const y=el.getBoundingClientRect().top+window.scrollY-(els.bar.getBoundingClientRect().height+30);
+    window.scrollTo({top:Math.max(0,y),behavior:"smooth"});
+    el.classList.add("bm-flash"); setTimeout(()=>el.classList.remove("bm-flash"),2200);
+  }
+  showToast("\ud83d\udd16 "+bm.bookName+" \u00b7 "+bm.where,"ok");
+}
+function renderBm(){
+  const list=$("bmList"); list.innerHTML="";
+  $("bmCnt").textContent=bookmarks.length+(bookmarks.length===1?" marcador":" marcadores");
+  const here=els.read.querySelector(".sent-block")?curPlace():null;
+  $("bmHere").innerHTML=here?('<span class="lbl">vas en</span> '+escapeHtml(here.bookName)+' \u00b7 '+escapeHtml(here.where)+'<div class="sn">\u201c'+escapeHtml(here.snip)+'\u201d</div>'):'<span class="lbl">abre un libro para marcar</span>';
+  if(!bookmarks.length){ list.innerHTML='<div class="bank-empty">Sin marcadores todav\u00eda. Cuando termines de leer, pulsa \u201cmarcar aqu\u00ed\u201d.</div>'; return; }
+  bookmarks.forEach(bm=>{
+    const row=document.createElement("div"); row.className="bankrow bmrow";
+    const d=new Date(bm.ts).toLocaleDateString("es-MX",{day:"numeric",month:"short"});
+    row.innerHTML='<div class="txt"><div class="hw">'+escapeHtml(bm.bookName)+' <span class="bm-where">'+escapeHtml(bm.where)+'</span></div>'+
+      (bm.note?'<div class="tr">'+escapeHtml(bm.note)+'</div>':'')+
+      '<div class="ctx">\u201c'+escapeHtml(bm.snip||"")+'\u201d \u00b7 '+escapeHtml(d)+'</div></div>'+
+      '<button class="del" aria-label="borrar marcador">&times;</button>';
+    row.querySelector(".txt").onclick=()=>goBookmark(bm);
+    row.querySelector(".del").onclick=async e=>{ e.stopPropagation(); bookmarks=bookmarks.filter(x=>x.id!==bm.id); await saveBookmarks(); renderBm(); $("bmBtn").classList.toggle("has",bookmarks.length>0); };
+    list.appendChild(row);
+  });
+}
+async function openBm(){ await loadBookmarks(); renderBm(); $("bmNote").value=""; $("bmOverlay").classList.add("open"); }
+function closeBm(){ $("bmOverlay").classList.remove("open"); }
+$("bmBtn").onclick=e=>{ e.stopPropagation(); openBm(); };
+$("bmClose").onclick=closeBm;
+$("bmOverlay").addEventListener("click",e=>{ if(e.target===$("bmOverlay")) closeBm(); });
+$("bmAdd").onclick=async()=>{ await addBookmark($("bmNote").value.trim()); $("bmNote").value=""; renderBm(); };
+$("bmNote").addEventListener("keydown",e=>{ if(e.key==="Enter"){ e.preventDefault(); $("bmAdd").click(); } });
+document.addEventListener("keydown",e=>{
+  if(e.target.tagName==="INPUT"||e.target.tagName==="TEXTAREA"||e.target.tagName==="SELECT"||e.metaKey||e.ctrlKey||e.altKey) return;
+  if(e.key==="Escape") closeBm();
+  if((e.key==="b"||e.key==="B") && !document.querySelector(".overlay.open")){ e.preventDefault(); addBookmark(""); }
+});
+loadBookmarks().then(()=>$("bmBtn").classList.toggle("has",bookmarks.length>0));
+/* ---------- quick save: double tap / double click a word, or press "g" ---------- */
+let lastTap={el:null,t:0};
+function onWordTap(e){
+  const now=Date.now();
+  if(lastTap.el===this && now-lastTap.t<400){
+    lastTap={el:null,t:0};
+    const word=this.textContent, sent=sentences[+this.dataset.si]||word;
+    if(activeWordEl!==this) onWord.call(this,e);
+    saveWord(word,sent,null);
+    this.classList.add("just-saved"); setTimeout(()=>this.classList.remove("just-saved"),900);
+    return;
+  }
+  lastTap={el:this,t:now};
+  if(activeWordEl===this && els.tray.classList.contains("open")) return; // second half of a double tap: don't refetch
+  onWord.call(this,e);
+}
+document.addEventListener("keydown",e=>{
+  if(e.target.tagName==="INPUT"||e.target.tagName==="TEXTAREA"||e.metaKey||e.ctrlKey||e.altKey) return;
+  if((e.key==="g"||e.key==="G") && activeWordEl && els.tray.classList.contains("open")){
+    e.preventDefault();
+    saveWord(activeWordEl.textContent, sentences[+activeWordEl.dataset.si]||activeWordEl.textContent, null);
+  }
+});
+let toastTimer=null;
+function showToast(msg,kind){
+  let t=document.getElementById("lxToast");
+  if(!t){ t=document.createElement("div"); t.id="lxToast"; t.setAttribute("role","status"); t.setAttribute("aria-live","polite"); document.body.appendChild(t); }
+  t.textContent=msg; t.className="show "+(kind||"ok");
+  clearTimeout(toastTimer); toastTimer=setTimeout(()=>{ t.className=kind||"ok"; },1800);
 }
 
 async function openBank(){ if(bankLoadedFor!==bankId()) await loadBank(); renderBank(); $("overlay").classList.add("open"); }
 function closeBank(){ $("overlay").classList.remove("open"); }
+/* the saved sentence can be a whole paragraph: show ~9 words on each side of the word, word highlighted */
+function wordIndex(sent,word){
+  const re=new RegExp("(^|[^\\p{L}])("+word.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+")(?![\\p{L}])","iu");
+  const m=re.exec(sent||""); return m?m.index+m[1].length:-1;
+}
+function snippetParts(sent,word,span){
+  span=span||9; sent=(sent||"").replace(/\s+/g," ").trim();
+  const i=wordIndex(sent,word);
+  if(i<0){ const ws=sent.split(" "); return {pre:"",hit:"",post:ws.slice(0,span*2).join(" ")+(ws.length>span*2?" \u2026":""),found:false}; }
+  const before=sent.slice(0,i).split(" ").filter(Boolean), after=sent.slice(i+word.length);
+  const aw=after.split(" ");
+  const pre=(before.length>span?"\u2026 ":"")+before.slice(-span).join(" ")+(before.length?" ":"");
+  const head=aw[0]||"";            // punctuation glued to the word
+  const post=head+(aw.length>1?" "+aw.slice(1,span+1).join(" "):"")+(aw.length>span+1?" \u2026":"");
+  return {pre,hit:sent.substr(i,word.length),post,found:true};
+}
+function snippetHtml(sent,word,tag){ const s=snippetParts(sent,word); tag=tag||"mark"; return escapeHtml(s.pre)+(s.found?"<"+tag+">"+escapeHtml(s.hit)+"</"+tag+">":"")+escapeHtml(s.post); }
+function dayLabel(k){
+  const today=dayKey(Date.now()), y=dayKey(Date.now()-864e5);
+  if(k===today) return "Hoy"; if(k===y) return "Ayer";
+  const [Y,M,D]=k.split("-").map(Number); return new Date(Y,M-1,D).toLocaleDateString("es-MX",{weekday:"short",day:"numeric",month:"short"});
+}
 function renderBank(){
   const list=$("bankList"); list.innerHTML="";
-  if(!bank.length){ list.innerHTML='<div class="bank-empty">A\u00fan no has guardado palabras. Toca una palabra y pulsa \u201cguardar\u201d.</div>'; return; }
-  bank.slice().reverse().forEach(it=>{
-    const row=document.createElement("div"); row.className="bankrow";
+  updateBankCount();
+  if(!bank.length){ list.innerHTML='<div class="bank-empty">A\u00fan no has guardado palabras. Toca dos veces una palabra para guardarla (o t\u00f3cala y pulsa \u201cguardar\u201d).</div>'; return; }
+  let lastDay=null;
+  bank.slice().sort((a,b)=>(b.ts||0)-(a.ts||0)).forEach(it=>{
+    const dk=dayKey(it.ts);
+    if(dk!==lastDay){
+      lastDay=dk;
+      const all=bank.filter(x=>dayKey(x.ts)===dk), pend=all.filter(x=>!x.exp).length;
+      const hd=document.createElement("div"); hd.className="bankday";
+      hd.innerHTML='<span>'+escapeHtml(dayLabel(dk))+'</span><span class="bd-n">'+all.length+(all.length===1?" palabra":" palabras")+(pend?' \u00b7 <b>'+pend+' nuevas</b>':' \u00b7 en Anki \u2713')+'</span>';
+      list.appendChild(hd);
+    }
+    const row=document.createElement("div"); row.className="bankrow"+(it.exp?" exp":"");
     row.innerHTML='<button class="play" aria-label="escuchar">&#128266;</button>'+
-      '<div class="txt"><div class="hw">'+escapeHtml(it.word)+'</div>'+
+      '<div class="txt"><div class="hw">'+escapeHtml(it.word)+(it.exp?' <span class="inanki" title="ya est\u00e1 en Anki">\u2713 Anki</span>':'')+'</div>'+
       '<div class="tr">'+escapeHtml(it.en||"")+'</div>'+
-      '<div class="ctx">'+escapeHtml(it.sent||"")+'</div></div>'+
+      '<div class="ctx">'+snippetHtml(it.sent,it.word)+'</div></div>'+
       '<button class="del" aria-label="eliminar">&times;</button>';
     row.querySelector(".play").onclick=()=>speak(it.word);
     row.querySelector(".del").onclick=async()=>{ const k=wkey(it.word); bank=bank.filter(x=>wkey(x.word)!==k); await persistBank(); renderBank(); };
@@ -1197,12 +1605,20 @@ function bankClean(s){ return (s||"").replace(/[\t\r\n]+/g," ").trim(); }
 const DECK_ROOT="Espa\u00f1ol";                     // parent Anki deck; each book becomes a subdeck under it
 function ankiDeck(name){ return DECK_ROOT+"::"+((name||"Banco").replace(/[\t\r\n]+/g," ").replace(/::/g,":").trim()||"Banco"); }
 function ankiSlug(name){ return (name||"banco").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"")||"banco"; }
-function ankiBack(it){ return bankClean(it.en)+(it.sent?"<br><br><i>"+bankClean(it.sent)+"</i>":""); }
-function bankRows(){ return bank.map(it=> bankClean(it.word)+"\t"+ankiBack(it) ).join("\n"); }
-function bankFile(){ return "#separator:tab\n#html:true\n#notetype:Basic\n#deck:"+ankiDeck(bankDeckName)+"\n"+bankRows(); }
+function ankiFront(it){ return "<b>"+escapeHtml(bankClean(it.word))+"</b>"+(it.sent?"<br><br><span style=\"font-size:.8em;opacity:.8\">"+bankClean(snippetHtml(it.sent,it.word,"b"))+"</span>":""); }
+function ankiBack(it){
+  const en=bankClean(it.en||"");
+  const alts=(it.alts||[]).map(bankClean).filter(a=>a && a.toLowerCase()!==en.toLowerCase()).slice(0,3);
+  let o="<div style=\"font-size:1.35em;font-weight:600\">"+escapeHtml(en||"\u2014")+"</div>";
+  if(it.pos||alts.length) o+="<div style=\"font-size:.8em;opacity:.65;margin-top:4px\">"+escapeHtml([it.pos||"",alts.length?"tambi\u00e9n: "+alts.join(", "):""].filter(Boolean).join(" \u00b7 "))+"</div>";
+  if(it.snipEn) o+="<div style=\"font-size:.85em;opacity:.8;margin-top:14px\"><i>\u201c"+escapeHtml(bankClean(it.snipEn))+"\u201d</i></div>";
+  return o;
+}
+function bankRows(items){ return (items||bank).map(it=> ankiFront(it)+"\t"+ankiBack(it)+"\tlector "+dayKey(it.ts) ).join("\n"); }
+function bankFile(items){ return "#separator:tab\n#html:true\n#notetype:Basic\n#deck:"+ankiDeck(bankDeckName)+"\n#tags column:3\n"+bankRows(items); }
 /* one file, each word routed to its own book subdeck via Anki's per-row deck column (Anki 2.1.55+) */
 function ankiMultiFile(items){
-  const body=items.map(it=> bankClean(it.word)+"\t"+ankiBack(it)+"\t"+ankiDeck(it.deck) ).join("\n");
+  const body=items.map(it=> ankiFront(it)+"\t"+ankiBack(it)+"\t"+ankiDeck(it.deck) ).join("\n");
   return "#separator:tab\n#html:true\n#notetype:Basic\n#deck column:3\n"+body;
 }
 function dlText(text,fname){
@@ -1210,10 +1626,19 @@ function dlText(text,fname){
   const a=document.createElement("a"); a.href=url; a.download=fname; document.body.appendChild(a); a.click();
   setTimeout(()=>{ URL.revokeObjectURL(url); a.remove(); },600);
 }
-async function copyBank(btn){ if(!bank.length) return; try{ await navigator.clipboard.writeText(bankRows()); const o=btn.textContent;btn.textContent="copiado \u2713";setTimeout(()=>btn.textContent=o,1300); }catch(e){ btn.textContent="no se pudo copiar"; } }
-function downloadBank(){
+async function copyBank(btn){ const items=newItems(); if(!items.length){ showToast("No hay palabras nuevas","dup"); return; } try{ await navigator.clipboard.writeText(bankRows(items)); const o=btn.textContent;btn.textContent="copiado \u2713";setTimeout(()=>btn.textContent=o,1300); }catch(e){ btn.textContent="no se pudo copiar"; } }
+async function downloadBank(){
   if(!bank.length) return;
-  dlText(bankFile(), "banco-"+ankiSlug(bankDeckName)+".txt");
+  await enrichAll(bank);
+  dlText(bankFile(), "banco-"+ankiSlug(bankDeckName)+"-todo.txt");
+}
+async function exportNewBank(){
+  const items=newItems(); if(!items.length){ showToast("Todo ya est\u00e1 en Anki \u2713","dup"); return; }
+  await enrichAll(items);
+  dlText(bankFile(items), "anki-"+ankiSlug(bankDeckName)+"-"+dayKey(Date.now())+".txt");
+  const now=Date.now(); items.forEach(x=>x.exp=now);
+  await persistBank(); renderBank();
+  showToast("\u2713 "+items.length+" palabras listas para Anki","ok");
 }
 /* ---------- organizer: un-mix banks that got merged across books ---------- */
 let orgBanks={}, orgNames={}, orgCustomNames={}, orgSel=new Set();
@@ -1422,6 +1847,7 @@ $("convBtn").onclick=convertBook; $("reconvBtn").onclick=reconvertBook;
 $("bankClose").onclick=closeBank;
 $("bankCopy").onclick=function(){copyBank(this);};
 $("bankDownload").onclick=downloadBank;
+$("bankExportNew").onclick=exportNewBank;
 $("bankOrganize").onclick=openOrg;
 $("orgCloseBtn").onclick=closeOrg;
 $("orgOverlay").addEventListener("click",e=>{ if(e.target===$("orgOverlay")) closeOrg(); });
